@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Transform shootTransform;
 
+    public int ownGold;
+
     public int playerHp;
 
     private float lastShotTime = 0f;
@@ -24,7 +26,7 @@ public class Player : MonoBehaviour
     
     private GameManager gameManager;
 
-    private int cnt = 0;
+    private int cnt;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +66,13 @@ public class Player : MonoBehaviour
                 lastShotTime = Time.time + (1.5f * delay[delayIndex]);
                 cnt = 0;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "Gold") {
+            GameManager.instance.IncreseCoin();
+            Destroy(other.gameObject);
         }
     }
 }

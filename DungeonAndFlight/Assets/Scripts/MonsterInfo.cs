@@ -12,9 +12,11 @@ public class MonsterInfo : MonoBehaviour
     private float posY;
     private bool isMovingUp;
 
+    [SerializeField]
+    private GameObject gold;
+
     void Start()
     {
-        posY = Random.Range(-5f, 5f);
         isMovingUp = Random.value > 0.5f; // 랜덤으로 이동 방향 결정
     }
 
@@ -43,6 +45,7 @@ public class MonsterInfo : MonoBehaviour
             Destroy(other.gameObject);
             if (hp <= 0) {
                 Destroy(gameObject);
+                Instantiate(gold, transform.position, Quaternion.identity);
             }
         } else if (other.gameObject.tag == "Player") {
             Player player = other.gameObject.GetComponent<Player>();

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,11 @@ public class GameManager : MonoBehaviour
     public GameObject startGame;
     public bool isGameOver = false;
     public GameObject gameOver;
+
+    private int coin = 0;
+
+    [SerializeField]
+    private TextMeshProUGUI text;
     
     void Awake() {
         if (instance == null) {
@@ -25,6 +31,11 @@ public class GameManager : MonoBehaviour
          startCanvas.SetActive(true);
          startGame.SetActive(false);
          gameOver.SetActive(false);
+    }
+
+    public void IncreseCoin() {
+        coin += 1;
+        text.SetText(coin.ToString());
     }
 
     public void StartGame()
