@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     }
     public void ShowMain() {
          startCanvas.SetActive(true);
+         startGame.SetActive(false);
     }
 
     public void StartGame()
@@ -20,6 +21,10 @@ public class GameManager : MonoBehaviour
         // 게임 시작 버튼 클릭 시 게임 플레이 캔버스로 전환
         startCanvas.SetActive(false);
         startGame.SetActive(true);
+    }
+
+    public void QuitGame() {
+        Application.Quit();
     }
 
     // Update is called once per frame

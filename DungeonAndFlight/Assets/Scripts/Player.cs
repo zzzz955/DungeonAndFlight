@@ -5,12 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    public float moveSpeed = 5f;
+    public float moveSpeed = 2f;
 
     // Start is called before the first frame update
     void Start()
     {
+        // AnimationController animation = new AnimationController();
         
+        // // 첫 번째 애니메이션을 재생합니다.
+        // animation.PlayAnimation("Run");
     }
 
     // Update is called once per frame
