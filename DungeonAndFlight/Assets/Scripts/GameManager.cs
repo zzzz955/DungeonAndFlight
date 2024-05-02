@@ -1,12 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     public GameObject startCanvas;
     public GameObject startGame;
-    // Start is called before the first frame update
+    public bool isGameOver = false;
+    public GameObject gameOver;
+    
+    void Awake() {
+        if (instance == null) {
+            instance = this;
+        }
+    }
     void Start()
     {
         ShowMain();
@@ -14,6 +24,7 @@ public class GameManager : MonoBehaviour
     public void ShowMain() {
          startCanvas.SetActive(true);
          startGame.SetActive(false);
+         gameOver.SetActive(false);
     }
 
     public void StartGame()
@@ -23,6 +34,10 @@ public class GameManager : MonoBehaviour
         startGame.SetActive(true);
     }
 
+    public void GoToMain() {
+        SceneManager.LoadScene("SampleScene");
+    }
+
     public void QuitGame() {
         Application.Quit();
     }
@@ -30,6 +45,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isGameOver) {
+            gameOver.SetActive(true);
+        }
+    }
+
+    public void EndGame() {
+        isGameOver = true;
     }
 }
