@@ -7,7 +7,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     public float moveSpeed = 2f;
     [SerializeField]
-    private GameObject weapon;
+    private GameObject[] weapon;
+    
+    public int weaponIndex;
 
     [SerializeField]
     private Transform shootTransform;
@@ -33,6 +35,7 @@ public class Player : MonoBehaviour
     {
         Upgrade = GetComponent<AnimationController>();
         playerHp = 10;
+        weaponIndex = 0;
     }
 
     // Update is called once per frame
@@ -56,7 +59,7 @@ public class Player : MonoBehaviour
 
     void Shoot() {
         if (Time.time > lastShotTime) {
-            Instantiate(weapon, shootTransform.position, Quaternion.identity);
+            Instantiate(weapon[weaponIndex], shootTransform.position, Quaternion.identity);
             cnt += 1;
             if (cnt < 3) {
                 lastShotTime = Time.time + (0.5f * delay[delayIndex]);
