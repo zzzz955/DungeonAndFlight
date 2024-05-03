@@ -20,9 +20,7 @@ public class Player : MonoBehaviour
 
     private float lastShotTime = 0f;
 
-    private float[] delay = new float[] {1.0f, 0.9f, 0.8f, 0.7f, 0.6f};
-
-    public int delayIndex = 0;
+    private float delay = 1f;
 
     private AnimationController Upgrade;
     
@@ -33,7 +31,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Upgrade = GetComponent<AnimationController>();
         playerHp = 10;
         weaponIndex = 0;
     }
@@ -45,9 +42,6 @@ public class Player : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         Vector3 moveTo = new Vector3(horizontalInput, verticalInput, 0f);
         transform.position += moveTo * moveSpeed * Time.deltaTime;
-        if (Upgrade.isUpgrade) {
-            moveSpeed = 5f;
-        }
 
         Shoot();
 
@@ -62,11 +56,11 @@ public class Player : MonoBehaviour
             Instantiate(weapon[weaponIndex], shootTransform.position, Quaternion.identity);
             cnt += 1;
             if (cnt < 3) {
-                lastShotTime = Time.time + (0.5f * delay[delayIndex]);
+                lastShotTime = Time.time + (0.5f * delay);
             } else if (cnt == 3) {
-                lastShotTime = Time.time + (1.0f * delay[delayIndex]);
+                lastShotTime = Time.time + (1.0f * delay);
             } else {
-                lastShotTime = Time.time + (1.5f * delay[delayIndex]);
+                lastShotTime = Time.time + (1.5f * delay);
                 cnt = 0;
             }
         }
@@ -84,10 +78,14 @@ public class Player : MonoBehaviour
     }
 
     public void UpgradeDelay() {
-        delayIndex += 1;
+        delay *= 0.9f;
     }
 
     public void UpgradeMovement() {
         moveSpeed += 1;
+        if (moveSpeed > 7) {
+            AnimationController movemotion = GetComponent<AnimationController>();
+            movemotion.movemotionUpgrade();
+        }
     }
 }

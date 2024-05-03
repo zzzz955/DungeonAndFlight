@@ -48,11 +48,11 @@ public class GameManager : MonoBehaviour
     private int nextWeaponIndex = 1;
 
     
-    private int[] delayPrice = new int[] {1, 2, 3, 4};
+    private int[] delayPrice = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
     [SerializeField]
     private int nextdelayIndex = 1;
 
-    private int[] movementPrice = new int[] {1, 2, 3, 4};
+    private int[] movementPrice = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
     [SerializeField]
     private int nextmovementIndex = 1;
     

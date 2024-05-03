@@ -6,7 +6,7 @@ using UnityEngine;
 public class BackGround : MonoBehaviour
 {
     [SerializeField]
-    private float moveSpeed = 1f;
+    private float moveSpeed = 0.5f;
     private SpriteRenderer spriteRenderer;
     private float stopPositionX;
     private bool isMoving = true;

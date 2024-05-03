@@ -33,4 +33,8 @@ public class AnimationController : MonoBehaviour
         // Animator Controller에서 animationName에 해당하는 애니메이션을 재생합니다.
         animator.Play(animationName);
     }
+
+    public void movemotionUpgrade() {
+        isUpgrade = true;
+    }
 }
