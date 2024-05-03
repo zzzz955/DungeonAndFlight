@@ -78,4 +78,16 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+    public void UpgradeWeapon() {
+        weaponIndex += 1;
+    }
+
+    public void UpgradeDelay() {
+        delayIndex += 1;
+    }
+
+    public void UpgradeMovement() {
+        moveSpeed += 1;
+    }
 }

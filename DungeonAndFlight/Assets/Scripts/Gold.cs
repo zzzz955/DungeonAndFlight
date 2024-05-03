@@ -10,18 +10,19 @@ public class Gold : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveCoin();
+        // moveCoin();
     }
 
     // Update is called once per frame
     void Update()
     {
+        transform.position += Vector3.left * moveSpeed * Time.deltaTime;
         if (transform.position.y < minX) {
             Destroy(gameObject);
         }
     }
 
-    void moveCoin() {
-        transform.position += Vector3.left * moveSpeed * Time.deltaTime;
-    }
+    // void moveCoin() {
+    //     transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+    // }
 }
