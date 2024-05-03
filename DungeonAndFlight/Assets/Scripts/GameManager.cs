@@ -19,7 +19,10 @@ public class GameManager : MonoBehaviour
     private int coin = 0;
 
     [SerializeField]
-    private TextMeshProUGUI text;
+    private TextMeshProUGUI coinText;
+
+    [SerializeField]
+    private TextMeshProUGUI HPText;
 
     [SerializeField]
     private TextMeshProUGUI shopText1;
@@ -77,7 +80,11 @@ public class GameManager : MonoBehaviour
     }
 
     private void UpdateCoin() {
-        text.SetText(coin.ToString());
+        coinText.SetText(coin.ToString());
+    }
+
+    public void UpdateHP(int HP) {
+        HPText.SetText(HP.ToString());
     }
 
     public void StartGame()

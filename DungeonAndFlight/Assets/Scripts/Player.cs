@@ -48,6 +48,8 @@ public class Player : MonoBehaviour
         if (playerHp <= 0) {
             GameManager.instance.EndGame();
             Destroy(gameObject);
+        } else {
+            GameManager.instance.UpdateHP(playerHp);
         }
     }
 
