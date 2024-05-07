@@ -11,9 +11,11 @@ public class MonsterInfo : MonoBehaviour
     private float minX = -10f;
     private float posY;
     private bool isMovingUp;
+    private float ran;
 
     [SerializeField]
     private GameObject gold;
+    public int defaultGold;
 
     void Start()
     {
@@ -45,7 +47,11 @@ public class MonsterInfo : MonoBehaviour
             Destroy(other.gameObject);
             if (hp <= 0) {
                 Destroy(gameObject);
-                Instantiate(gold, transform.position, Quaternion.identity);
+                ran = Random.Range(0f, 1f);
+                if (ran > 0.5f) {
+                    Instantiate(gold, transform.position, Quaternion.identity);
+                    gold.GetComponent<Gold>().SetGoldeAmount(defaultGold);
+                }
             }
         } else if (other.gameObject.tag == "Player") {
             Player player = other.gameObject.GetComponent<Player>();

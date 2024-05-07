@@ -104,6 +104,7 @@ MonoBehaviour:
   moveSpeed: 1
   damage: 1
   gold: {fileID: 5861875687015674019, guid: c7a6b21208b00254baaf3242bd201549, type: 3}
+  defaultGold: 10
 --- !u!95 &518591599933850355
 Animator:
   serializedVersion: 5

@@ -74,8 +74,8 @@ public class GameManager : MonoBehaviour
          gameOver.SetActive(false);
     }
 
-    public void IncreseCoin() {
-        coin += 1;
+    public void IncreseCoin(int goldValue) {
+        coin += goldValue;
         UpdateCoin();
     }
 
@@ -116,8 +116,8 @@ public class GameManager : MonoBehaviour
 
     public void EnterShop() {
         Time.timeScale = 0f;
+        ShopUpdate();
         shop.SetActive(true);
-        
     }
 
     public void ExitShop() {

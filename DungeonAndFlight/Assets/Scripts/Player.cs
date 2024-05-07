@@ -70,7 +70,8 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Gold") {
-            GameManager.instance.IncreseCoin();
+            Gold gold = other.GetComponent<Gold>();
+            GameManager.instance.IncreseCoin(gold.amount);
             Destroy(other.gameObject);
         }
     }
