@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class Player : MonoBehaviour
     private GameManager gameManager;
 
     private int cnt;
+
+    public TMP_Text coinTextPrefab; // UI Text 프리팹
+    public float coinDisplayDuration = 3f; // 코인 획득량이 표시되는 시간
+    public float coinDisplayMoveSpeed = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +78,25 @@ public class Player : MonoBehaviour
             Gold gold = other.GetComponent<Gold>();
             GameManager.instance.IncreseCoin(gold.amount);
             Destroy(other.gameObject);
+
+            // 코인 획득량을 표시하는 UI Text 생성
+            DisplayCoinText(gold.amount, other.transform.position);
+        }
+    }
+
+    private void DisplayCoinText(int coinAmount, Vector3 position) {
+        Canvas canvas = GetComponentInChildren<Canvas>();
+        if (canvas == null)
+        {
+            return;
+        }
+        if (coinTextPrefab != null)
+        {
+            TMP_Text coinText = Instantiate(coinTextPrefab, canvas.transform);
+            coinText.text = "+ " + coinAmount.ToString() + "G";
+            coinText.rectTransform.position = Camera.main.WorldToScreenPoint(position);
+
+            Destroy(coinText.gameObject, coinDisplayDuration);
         }
     }
 

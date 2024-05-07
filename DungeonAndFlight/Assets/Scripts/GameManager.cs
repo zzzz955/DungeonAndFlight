@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject shop;
 
-    private int coin = 0;
+    private int coin = 100;
 
     [SerializeField]
     private TextMeshProUGUI coinText;

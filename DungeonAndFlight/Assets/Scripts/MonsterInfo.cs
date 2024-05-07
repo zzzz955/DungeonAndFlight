@@ -49,8 +49,8 @@ public class MonsterInfo : MonoBehaviour
                 Destroy(gameObject);
                 ran = Random.Range(0f, 1f);
                 if (ran > 0.5f) {
-                    Instantiate(gold, transform.position, Quaternion.identity);
                     gold.GetComponent<Gold>().SetGoldeAmount(defaultGold);
+                    Instantiate(gold, transform.position, Quaternion.identity);
                 }
             }
         } else if (other.gameObject.tag == "Player") {
