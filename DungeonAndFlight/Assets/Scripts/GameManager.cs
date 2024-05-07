@@ -197,4 +197,8 @@ public class GameManager : MonoBehaviour
             shopButton3.interactable = false;
         }
     }
+
+    public void BossKilled() {
+        // 보스 죽으면 처리 할 것 생각
+    }
 }

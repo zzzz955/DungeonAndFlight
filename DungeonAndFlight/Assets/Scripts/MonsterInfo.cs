@@ -17,6 +17,9 @@ public class MonsterInfo : MonoBehaviour
     private GameObject gold;
     public int defaultGold;
 
+    [SerializeField]
+    private bool isBoss = false;
+
     void Start()
     {
         isMovingUp = Random.value > 0.5f; // 랜덤으로 이동 방향 결정
@@ -49,8 +52,13 @@ public class MonsterInfo : MonoBehaviour
                 Destroy(gameObject);
                 ran = Random.Range(0f, 1f);
                 if (ran > 0.5f) {
-                    gold.GetComponent<Gold>().SetGoldeAmount(defaultGold);
-                    Instantiate(gold, transform.position, Quaternion.identity);
+                    if (gold != null) {
+                        gold.GetComponent<Gold>().SetGoldeAmount(defaultGold);
+                        Instantiate(gold, transform.position, Quaternion.identity);
+                    }
+                }
+                if (isBoss) {
+                    GameManager.instance.BossKilled();
                 }
             }
         } else if (other.gameObject.tag == "Player") {
