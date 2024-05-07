@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI shopPrice3;
 
+    public GameObject stageClear;
+
     public Button shopButton1;
     public Button shopButton2;
     public Button shopButton3;
@@ -199,6 +201,20 @@ public class GameManager : MonoBehaviour
     }
 
     public void BossKilled() {
-        // 보스 죽으면 처리 할 것 생각
+        while (Time.timeScale < 0f) {
+            Time.timeScale -= 0.1f;
+        }
+        if (Time.timeScale == 0) {
+            stageClear.SetActive(true);
+        }
+    }
+
+    public void TryNextLevel() {
+        while (Time.timeScale < 1f) {
+            Time.timeScale += 0.1f;
+        }
+        if (Time.timeScale == 1) {
+            stageClear.SetActive(false);
+        }
     }
 }

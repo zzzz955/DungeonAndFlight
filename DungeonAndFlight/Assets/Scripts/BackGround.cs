@@ -7,6 +7,9 @@ public class BackGround : MonoBehaviour
 {
     [SerializeField]
     private float moveSpeed = 0.5f;
+    [SerializeField]
+    private GameObject[] backGrounds;
+    public int backGroundIndex = 0;
     private SpriteRenderer spriteRenderer;
     private float stopPositionX;
     private bool isMoving = true;
@@ -14,11 +17,7 @@ public class BackGround : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
-        Vector2 spriteSize = spriteRenderer.bounds.size;
-
-        stopPositionX = -((spriteSize.x / 2f) - 9f);
+        UpdateBackGround(backGroundIndex);
     }
 
     // Update is called once per frame
@@ -31,5 +30,16 @@ public class BackGround : MonoBehaviour
                 isMoving = false;
             }
         }
+    }
+
+    public void UpdateBackGround(int index) {
+        SizeCheck();
+        
+    }
+
+    void SizeCheck() {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        Vector2 spriteSize = spriteRenderer.bounds.size;
+        stopPositionX = -((spriteSize.x / 2f) - 9f);
     }
 }
