@@ -60,21 +60,29 @@ public class GameManager : MonoBehaviour
     private int[] movementPrice = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
     [SerializeField]
     private int nextmovementIndex = 1;
+
+    private MonsterSpawner monsterSpawner;
+    private BackGroundController backGroundController;
+
     
     void Awake() {
         if (instance == null) {
             instance = this;
         }
+        startCanvas.SetActive(true);
+        startGame.SetActive(false);
+        gameOver.SetActive(false);
     }
     void Start()
     {
-        ShowMain();
+
     }
-    public void ShowMain() {
-         startCanvas.SetActive(true);
-         startGame.SetActive(false);
-         gameOver.SetActive(false);
-    }
+
+    // public void ShowMain() {
+    //     startCanvas.SetActive(true);
+    //     startGame.SetActive(false);
+    //     gameOver.SetActive(false);
+    // }
 
     public void IncreseCoin(int goldValue) {
         coin += goldValue;
@@ -201,20 +209,18 @@ public class GameManager : MonoBehaviour
     }
 
     public void BossKilled() {
-        while (Time.timeScale < 0f) {
-            Time.timeScale -= 0.1f;
-        }
-        if (Time.timeScale == 0) {
-            stageClear.SetActive(true);
-        }
+        Invoke("ShowStageClear", 1.5f);
+    }
+
+    private void ShowStageClear() {
+        stageClear.SetActive(true);
     }
 
     public void TryNextLevel() {
-        while (Time.timeScale < 1f) {
-            Time.timeScale += 0.1f;
-        }
-        if (Time.timeScale == 1) {
-            stageClear.SetActive(false);
-        }
+        monsterSpawner = FindObjectOfType<MonsterSpawner>();
+        backGroundController = FindObjectOfType<BackGroundController>();
+        monsterSpawner.NextLevel();
+        backGroundController.NextLevel();
+        stageClear.SetActive(false);
     }
 }

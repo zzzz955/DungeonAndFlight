@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &102499167
 Transform:
   m_ObjectHideFlags: 0
@@ -383,7 +383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &207297648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2574,7 +2574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 0.46666667}
+  m_Color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 0.8666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4740,7 +4740,7 @@ MonoBehaviour:
   shopPrice1: {fileID: 411898875}
   shopPrice2: {fileID: 601138575}
   shopPrice3: {fileID: 1492674126}
-  stageClear: {fileID: 0}
+  stageClear: {fileID: 207297647}
   shopButton1: {fileID: 300555126}
   shopButton2: {fileID: 1398749207}
   shopButton3: {fileID: 222304797}
@@ -6144,6 +6144,7 @@ MonoBehaviour:
   - {fileID: 8919720073856826166, guid: 9704ba2d894ebda4fb8e8d83f246debd, type: 3}
   levelIndex: 0
   coolDown: 1
+  isBossRound: 0
   spawnPerLevels: 5
 --- !u!1 &1809197493
 GameObject:

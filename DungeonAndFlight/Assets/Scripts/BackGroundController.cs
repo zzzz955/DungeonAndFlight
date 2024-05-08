@@ -28,4 +28,9 @@ public class BackGroundController : MonoBehaviour
         }
         Instantiate(backGrounds[index], transform.position, Quaternion.identity);
     }
+
+    public void NextLevel() {
+        backGroundIndex += 1;
+        ShowBackGround(backGroundIndex);
+    }
 }

@@ -100,11 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9815a001fcef5634091bba5b4b188b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 200
-  moveSpeed: 10
+  hp: 10
+  moveSpeed: 1
   damage: 5
   gold: {fileID: 0}
   defaultGold: 0
+  isBoss: 1
 --- !u!95 &966047789488809300
 Animator:
   serializedVersion: 5

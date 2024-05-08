@@ -9,7 +9,6 @@ public class MonsterInfo : MonoBehaviour
     public int damage;
 
     private float minX = -10f;
-    private float posY;
     private bool isMovingUp;
     private float ran;
 

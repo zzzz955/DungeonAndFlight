@@ -17,7 +17,7 @@ public class MonsterSpawner : MonoBehaviour
     private float spawnTime = 0f;
     public float coolDown = 1.0f;
     private int createCnt = 0;
-    private bool isBoss;
+    public bool isBossRound;
 
     [SerializeField]
     private int spawnPerLevels = 10;
@@ -28,7 +28,7 @@ public class MonsterSpawner : MonoBehaviour
     void Start()
     {
         isCreate = true;
-        isBoss = false;
+        isBossRound = false;
         levelIndex = 0;
     }
 
@@ -43,8 +43,8 @@ public class MonsterSpawner : MonoBehaviour
                 coolTime = Random.Range(1.0f, 5.0f) * coolDown;
                 spawnTime = 0f;
             }
-            if (createCnt == spawnPerLevels && isBoss == false) {
-                isBoss = true;
+            if (createCnt == spawnPerLevels && isBossRound == false) {
+                isBossRound = true;
                 SpawnBoss(levelIndex);
             }
         }
@@ -60,9 +60,9 @@ public class MonsterSpawner : MonoBehaviour
         Instantiate(Bosses[levelIndex], spawnPos, Quaternion.Euler(0f, 180f, 0f));
     }
 
-    void NextLevel() {
+    public void NextLevel() {
         levelIndex += 1;
-        isBoss = false;
         createCnt = 0;
+        isBossRound = false;
     }
 }
