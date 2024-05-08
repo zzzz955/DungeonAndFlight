@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2530734513999789154}
   - component: {fileID: 3220110091038153540}
   m_Layer: 0
-  m_Name: 1-2
+  m_Name: 2-1
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 69f61323418ea1f40939da24aa8bc369, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb65e199e67031a4b9c6fdcf0afee03e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,11 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9815a001fcef5634091bba5b4b188b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
-  moveSpeed: 1
-  damage: 1
+  hp: 15
+  moveSpeed: 2
+  damage: 2
   gold: {fileID: 5861875687015674019, guid: c7a6b21208b00254baaf3242bd201549, type: 3}
-  defaultGold: 10
+  defaultGold: 20
   isBoss: 0
 --- !u!95 &966047789488809300
 Animator:
@@ -116,7 +116,7 @@ Animator:
   m_GameObject: {fileID: 8919720073856826166}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c5d2d86987d749641a0f115553aff69a, type: 2}
+  m_Controller: {fileID: 9100000, guid: f066578aac164534786a1bc196047a10, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -159,18 +159,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.017289996, y: -0.04754749}
+  m_Offset: {x: 0.017289996, y: -0.09739578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.22, y: 0.74}
+    oldSize: {x: 0.98, y: 0.78}
     newSize: {x: 1.22, y: 0.74}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0355735, y: 0.64490503}
+  m_Size: {x: 1.0355735, y: 0.54520845}
   m_EdgeRadius: 0
 --- !u!50 &3220110091038153540
 Rigidbody2D:

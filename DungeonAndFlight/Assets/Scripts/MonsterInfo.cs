@@ -19,6 +19,15 @@ public class MonsterInfo : MonoBehaviour
     [SerializeField]
     private bool isBoss = false;
 
+    [SerializeField]
+    private GameObject enemyWeapon;
+
+    [SerializeField]
+    private float delay = 1f;
+    private float lastShotTime = 0f;
+
+    private float lastTagTime = 0f;
+
     void Start()
     {
         isMovingUp = Random.value > 0.5f; // 랜덤으로 이동 방향 결정
@@ -26,8 +35,11 @@ public class MonsterInfo : MonoBehaviour
 
     void Update() {
         Vector3 moveDirection = isMovingUp ? Vector3.up : Vector3.down;
-
-        transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        if (!isBoss) {
+            transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        } else {
+            transform.position = new Vector3(7f, transform.position.y, transform.position.z);
+        }
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
         if (transform.position.y > 4f && isMovingUp)
         {
@@ -36,6 +48,9 @@ public class MonsterInfo : MonoBehaviour
         else if (transform.position.y < -4f && !isMovingUp)
         {
             isMovingUp = true;
+        }
+        if (enemyWeapon != null) {
+            Shoot();
         }
         if (transform.position.x < minX) {
             Destroy(gameObject);
@@ -48,7 +63,6 @@ public class MonsterInfo : MonoBehaviour
             hp -= weapon.damage;
             Destroy(other.gameObject);
             if (hp <= 0) {
-                Destroy(gameObject);
                 ran = Random.Range(0f, 1f);
                 if (ran > 0.5f) {
                     if (gold != null) {
@@ -59,11 +73,22 @@ public class MonsterInfo : MonoBehaviour
                 if (isBoss) {
                     GameManager.instance.BossKilled();
                 }
+                Destroy(gameObject);
             }
-        } else if (other.gameObject.tag == "Player") {
+        } else if (other.gameObject.tag == "Player" && Time.time > lastTagTime) {
+            lastTagTime = Time.time + 1f;
             Player player = other.gameObject.GetComponent<Player>();
             player.playerHp -= damage;
-            Destroy(gameObject);
+            if (!isBoss) {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    void Shoot() {
+        if (Time.time > lastShotTime) {
+            Instantiate(enemyWeapon, transform.position, Quaternion.Euler(0f, 0f, -90f));
+            lastShotTime = Time.time + delay;
         }
     }
 }

@@ -383,7 +383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &207297648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1864,7 +1864,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1331910941}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GoToMain
+        m_MethodName: TryNextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6136,12 +6136,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bosses:
   - {fileID: 8919720073856826166, guid: 00a81534914af0e4b899a815c97ef3b5, type: 3}
+  - {fileID: 8919720073856826166, guid: d9d16af59090f894c9f8fe37e4dc2597, type: 3}
   level1:
   - {fileID: 2531020969916668390, guid: 523c8fcf93392554eaec8c4abc44b963, type: 3}
   - {fileID: 8919720073856826166, guid: 9704ba2d894ebda4fb8e8d83f246debd, type: 3}
   level2:
-  - {fileID: 2531020969916668390, guid: 523c8fcf93392554eaec8c4abc44b963, type: 3}
-  - {fileID: 8919720073856826166, guid: 9704ba2d894ebda4fb8e8d83f246debd, type: 3}
+  - {fileID: 8919720073856826166, guid: 850056a5b38afae4b9d10ba92910782a, type: 3}
+  - {fileID: 8919720073856826166, guid: 0045049b700f60e4fad090265454a7fd, type: 3}
+  - {fileID: 8919720073856826166, guid: 758500998f203a64ebf6bacd3a81696f, type: 3}
   levelIndex: 0
   coolDown: 1
   isBossRound: 0
