@@ -22,7 +22,7 @@ public class MonsterSpawner : MonoBehaviour
     public bool isBossRound;
 
     [SerializeField]
-    private int spawnPerLevels = 10;
+    private int spawnPerLevels = 60;
 
     void Awake() {
         levels = new GameObject[][] {level1, level2, level3, level4};

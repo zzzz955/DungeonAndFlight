@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0.6541858, y: -2.107903, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   defaultGold: 30
   isBoss: 0
   enemyWeapon: {fileID: 4459611658358135105, guid: b856b10254f02dc41b3a00110c85aeee, type: 3}
-  delay: 1
+  delay: 1.5
 --- !u!95 &966047789488809300
 Animator:
   serializedVersion: 5
