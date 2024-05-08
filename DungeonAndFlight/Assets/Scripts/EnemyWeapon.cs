@@ -9,16 +9,29 @@ public class EnemyWeapon : MonoBehaviour
 
     public int damage = 1;
 
+    [SerializeField]
+    private bool isAdvanced = false;
+
+    private Transform player;
+
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 4f);
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (isAdvanced) {
+            Vector3 direction = (player.position - transform.position).normalized;
+            Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+            rb.velocity = direction * moveSpeed;
+        }
     }
 
     // Update is called once per frame
     void Update()
-    {
-        transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+    {   
+        if (!isAdvanced) {
+            transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

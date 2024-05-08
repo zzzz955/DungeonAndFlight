@@ -8,6 +8,8 @@ public class MonsterSpawner : MonoBehaviour
     public GameObject[] Bosses;
     public GameObject[] level1;
     public GameObject[] level2;
+    public GameObject[] level3;
+    public GameObject[] level4;
     private GameObject[][] levels;
     public int levelIndex;
 
@@ -23,7 +25,7 @@ public class MonsterSpawner : MonoBehaviour
     private int spawnPerLevels = 10;
 
     void Awake() {
-        levels = new GameObject[][] {level1, level2};
+        levels = new GameObject[][] {level1, level2, level3, level4};
     }
     void Start()
     {
@@ -56,7 +58,7 @@ public class MonsterSpawner : MonoBehaviour
     }
 
     void SpawnBoss(int index) {
-        Vector3 spawnPos = new Vector3(transform.position.x, 0, transform.position.z);
+        Vector3 spawnPos = new Vector3(7f, 0, transform.position.z);
         Instantiate(Bosses[levelIndex], spawnPos, Quaternion.Euler(0f, 180f, 0f));
     }
 

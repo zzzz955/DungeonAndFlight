@@ -10,6 +10,7 @@ public class MonsterInfo : MonoBehaviour
 
     private float minX = -10f;
     private bool isMovingUp;
+    private bool isMovingHorizon;
     private float ran;
 
     [SerializeField]
@@ -31,14 +32,16 @@ public class MonsterInfo : MonoBehaviour
     void Start()
     {
         isMovingUp = Random.value > 0.5f; // 랜덤으로 이동 방향 결정
+        isMovingHorizon = Random.value > 0.5f;
     }
 
     void Update() {
         Vector3 moveDirection = isMovingUp ? Vector3.up : Vector3.down;
+        Vector3 moveDirection2 = isMovingHorizon ? Vector3.left : Vector3.right;
         if (!isBoss) {
             transform.position += Vector3.left * moveSpeed * Time.deltaTime;
         } else {
-            transform.position = new Vector3(7f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         }
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
         if (transform.position.y > 4f && isMovingUp)
@@ -49,8 +52,19 @@ public class MonsterInfo : MonoBehaviour
         {
             isMovingUp = true;
         }
+        if (isBoss) {
+            transform.Translate(moveDirection2 * moveSpeed * Time.deltaTime);
+            if (transform.position.x > 9f && isMovingHorizon)
+        {
+            isMovingHorizon = false;
+        }
+        else if (transform.position.x < 5f && !isMovingHorizon)
+        {
+            isMovingHorizon = true;
+        }
+        }
         if (enemyWeapon != null) {
-            Shoot();
+            Shoot();         
         }
         if (transform.position.x < minX) {
             Destroy(gameObject);
@@ -63,6 +77,7 @@ public class MonsterInfo : MonoBehaviour
             hp -= weapon.damage;
             Destroy(other.gameObject);
             if (hp <= 0) {
+                Destroy(gameObject);
                 ran = Random.Range(0f, 1f);
                 if (ran > 0.5f) {
                     if (gold != null) {
@@ -73,7 +88,6 @@ public class MonsterInfo : MonoBehaviour
                 if (isBoss) {
                     GameManager.instance.BossKilled();
                 }
-                Destroy(gameObject);
             }
         } else if (other.gameObject.tag == "Player" && Time.time > lastTagTime) {
             lastTagTime = Time.time + 1f;

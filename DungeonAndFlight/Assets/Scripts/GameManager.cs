@@ -42,7 +42,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI shopPrice3;
 
+    [SerializeField]
+    private TextMeshProUGUI gameCleared;
+
     public GameObject stageClear;
+    private int currentStage = 0;
+    public Button noMoreLevels;
 
     public Button shopButton1;
     public Button shopButton2;
@@ -63,7 +68,7 @@ public class GameManager : MonoBehaviour
 
     private MonsterSpawner monsterSpawner;
     private BackGroundController backGroundController;
-
+    private BGMController bgmController;
     
     void Awake() {
         if (instance == null) {
@@ -75,7 +80,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-
+        
     }
 
     // public void ShowMain() {
@@ -99,9 +104,14 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        // 게임 시작 버튼 클릭 시 게임 플레이 캔버스로 전환
         startCanvas.SetActive(false);
         startGame.SetActive(true);
+
+        if (monsterSpawner == null || backGroundController == null) {
+            monsterSpawner = FindObjectOfType<MonsterSpawner>();
+            backGroundController = FindObjectOfType<BackGroundController>();
+            bgmController = FindAnyObjectByType<BGMController>();
+        }
     }
 
     public void GoToMain() {
@@ -209,18 +219,23 @@ public class GameManager : MonoBehaviour
     }
 
     public void BossKilled() {
+        
+        currentStage += 1;
         Invoke("ShowStageClear", 1.5f);
     }
 
     private void ShowStageClear() {
+        if (currentStage == monsterSpawner.Bosses.Length) {
+            noMoreLevels.interactable = false;
+            gameCleared.SetText("GameCleared!");
+        }
         stageClear.SetActive(true);
     }
 
     public void TryNextLevel() {
-        monsterSpawner = FindObjectOfType<MonsterSpawner>();
-        backGroundController = FindObjectOfType<BackGroundController>();
         monsterSpawner.NextLevel();
         backGroundController.NextLevel();
+        bgmController.NextLevel();
         stageClear.SetActive(false);
     }
 }

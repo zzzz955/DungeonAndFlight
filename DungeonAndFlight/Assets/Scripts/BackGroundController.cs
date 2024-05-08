@@ -7,6 +7,7 @@ public class BackGroundController : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] backGrounds;
+    private GameObject currentBackground;
     public int backGroundIndex = 0;
 
     // Start is called before the first frame update
@@ -22,15 +23,15 @@ public class BackGroundController : MonoBehaviour
     }
 
     public void ShowBackGround(int index) {
-        foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
+        if (currentBackground != null) {
+            Destroy(currentBackground);
         }
-        Instantiate(backGrounds[index], transform.position, Quaternion.identity);
+        currentBackground = Instantiate(backGrounds[index], transform.position, Quaternion.identity);
     }
 
     public void NextLevel() {
         backGroundIndex += 1;
+        Debug.Log($"{backGroundIndex}");
         ShowBackGround(backGroundIndex);
     }
 }
