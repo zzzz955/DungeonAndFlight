@@ -52,8 +52,9 @@ public class GameManager : MonoBehaviour
     public Button shopButton1;
     public Button shopButton2;
     public Button shopButton3;
+    public Button shopButton4;
 
-    private int[] weaponPrice = new int[] {1, 2};
+    private int[] weaponPrice = new int[] {1, 2, 3, 4};
     [SerializeField]
     private int nextWeaponIndex = 1;
 
@@ -215,6 +216,18 @@ public class GameManager : MonoBehaviour
         }
         if (nextmovementIndex > movementPrice.Length) {
             shopButton3.interactable = false;
+        }
+    }
+
+    public void HPRecovery() {
+        if (coin >= 100) {
+            coin -= 100;
+            Player player = FindObjectOfType<Player>();
+            if (player != null) {
+                player.IncreaseHP();
+            }
+            ShopUpdate();
+            UpdateCoin();
         }
     }
 

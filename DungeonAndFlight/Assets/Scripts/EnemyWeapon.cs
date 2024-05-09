@@ -19,7 +19,7 @@ public class EnemyWeapon : MonoBehaviour
     {
         Destroy(gameObject, 4f);
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        if (isAdvanced) {
+        if (isAdvanced && player != null) {
             Vector3 direction = (player.position - transform.position).normalized;
             Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
             rb.velocity = direction * moveSpeed;

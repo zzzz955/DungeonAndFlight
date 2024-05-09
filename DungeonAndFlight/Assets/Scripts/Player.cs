@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
         Shoot();
 
         if (playerHp <= 0) {
+            GameManager.instance.UpdateHP(0);
             GameManager.instance.EndGame();
             Destroy(gameObject);
         } else {
@@ -114,5 +115,9 @@ public class Player : MonoBehaviour
             AnimationController movemotion = GetComponent<AnimationController>();
             movemotion.movemotionUpgrade();
         }
+    }
+
+    public void IncreaseHP() {
+        playerHp += 5;
     }
 }

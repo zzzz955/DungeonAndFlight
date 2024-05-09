@@ -31,7 +31,6 @@ public class BackGroundController : MonoBehaviour
 
     public void NextLevel() {
         backGroundIndex += 1;
-        Debug.Log($"{backGroundIndex}");
         ShowBackGround(backGroundIndex);
     }
 }

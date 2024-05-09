@@ -10,6 +10,7 @@ public class MonsterSpawner : MonoBehaviour
     public GameObject[] level2;
     public GameObject[] level3;
     public GameObject[] level4;
+    public GameObject[] level5;
     private GameObject[][] levels;
     public int levelIndex;
 
@@ -22,10 +23,10 @@ public class MonsterSpawner : MonoBehaviour
     public bool isBossRound;
 
     [SerializeField]
-    private int spawnPerLevels = 60;
+    private int spawnPerLevels = 30;
 
     void Awake() {
-        levels = new GameObject[][] {level1, level2, level3, level4};
+        levels = new GameObject[][] {level1, level2, level3, level4, level5};
     }
     void Start()
     {
@@ -66,5 +67,7 @@ public class MonsterSpawner : MonoBehaviour
         levelIndex += 1;
         createCnt = 0;
         isBossRound = false;
+        coolDown *= 0.95f;
+        spawnPerLevels += 10;
     }
 }
