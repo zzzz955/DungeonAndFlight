@@ -2669,7 +2669,7 @@ MonoBehaviour:
   weaponIndex: 0
   shootTransform: {fileID: 1710177354}
   ownGold: 0
-  playerHp: 10
+  playerHp: 20
   coinTextPrefab: {fileID: 7984038207716342441, guid: 799ad71e05fd00146bad78bce41c395b, type: 3}
   coinDisplayDuration: 1
   coinDisplayMoveSpeed: 1
@@ -5378,6 +5378,7 @@ MonoBehaviour:
   shopButton3: {fileID: 222304797}
   shopButton4: {fileID: 0}
   nextWeaponIndex: 1
+  nextdelayIndex: 1
   nextmovementIndex: 1
 --- !u!1 &1390657023
 GameObject:

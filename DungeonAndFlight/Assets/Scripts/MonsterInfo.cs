@@ -78,7 +78,11 @@ public class MonsterInfo : MonoBehaviour
             Destroy(other.gameObject);
             if (hp <= 0) {
                 Destroy(gameObject);
-                ran = Random.Range(0f, 1f);
+                if (isBoss) {
+                    ran = 1;
+                } else {
+                    ran = Random.Range(0f, 1f);
+                }
                 if (ran > 0.5f) {
                     if (gold != null) {
                         gold.GetComponent<Gold>().SetGoldeAmount(defaultGold);

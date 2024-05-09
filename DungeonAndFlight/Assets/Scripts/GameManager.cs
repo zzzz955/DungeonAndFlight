@@ -65,7 +65,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int nextdelayIndex = 1;
 
-    private int[] movementPrice = Enumerable.Repeat(30, 15).ToArray();
+    private int[] movementPrice = new int[] {20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 110, 120, 130};
+    
     [SerializeField]
     private int nextmovementIndex = 1;
 

@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerHp = 10;
+        playerHp = 20;
         weaponIndex = 0;
     }
 
