@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject shop;
 
-    private int coin = 100;
+    private int coin = 0;
 
     [SerializeField]
     private TextMeshProUGUI coinText;
@@ -54,16 +55,17 @@ public class GameManager : MonoBehaviour
     public Button shopButton3;
     public Button shopButton4;
 
-    private int[] weaponPrice = new int[] {1, 2, 3, 4, 5};
+    private int[] weaponPrice = new int[] {50, 100, 300, 500, 1000};
     [SerializeField]
     private int nextWeaponIndex = 1;
 
     
-    private int[] delayPrice = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    private int[] delayPrice = Enumerable.Repeat(50, 15).ToArray();
+
     [SerializeField]
     private int nextdelayIndex = 1;
 
-    private int[] movementPrice = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    private int[] movementPrice = Enumerable.Repeat(30, 15).ToArray();
     [SerializeField]
     private int nextmovementIndex = 1;
 

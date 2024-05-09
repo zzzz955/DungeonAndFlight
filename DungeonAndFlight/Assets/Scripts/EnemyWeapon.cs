@@ -18,7 +18,7 @@ public class EnemyWeapon : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, 4f);
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
         if (isAdvanced && player != null) {
             Vector3 direction = (player.position - transform.position).normalized;
             Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();

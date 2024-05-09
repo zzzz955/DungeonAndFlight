@@ -6,7 +6,7 @@ using TMPro;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    public float moveSpeed = 2f;
+    public float moveSpeed = 3f;
     [SerializeField]
     private GameObject[] weapon;
     

@@ -67,7 +67,7 @@ public class MonsterSpawner : MonoBehaviour
         levelIndex += 1;
         createCnt = 0;
         isBossRound = false;
-        coolDown *= 0.95f;
+        coolDown *= 0.9f;
         spawnPerLevels += 10;
     }
 }
