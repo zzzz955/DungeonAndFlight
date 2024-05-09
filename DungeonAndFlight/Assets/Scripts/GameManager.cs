@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     public Button shopButton3;
     public Button shopButton4;
 
-    private int[] weaponPrice = new int[] {1, 2, 3, 4};
+    private int[] weaponPrice = new int[] {1, 2, 3, 4, 5};
     [SerializeField]
     private int nextWeaponIndex = 1;
 

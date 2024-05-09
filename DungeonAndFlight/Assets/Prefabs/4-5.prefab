@@ -104,10 +104,10 @@ MonoBehaviour:
   moveSpeed: 2
   damage: 2
   gold: {fileID: 5861875687015674019, guid: c7a6b21208b00254baaf3242bd201549, type: 3}
-  defaultGold: 30
+  defaultGold: 52
   isBoss: 0
   enemyWeapon: {fileID: 4459611658358135105, guid: b856b10254f02dc41b3a00110c85aeee, type: 3}
-  delay: 1.5
+  delay: 2
 --- !u!95 &966047789488809300
 Animator:
   serializedVersion: 5
