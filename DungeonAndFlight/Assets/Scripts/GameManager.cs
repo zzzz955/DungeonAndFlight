@@ -129,8 +129,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isGameOver) {
-            gameOver.SetActive(true);
+        if (isGameOver) gameOver.SetActive(true);
+
+        if (!shop.gameObject.activeSelf && Input.GetKeyDown(KeyCode.P)) EnterShop();
+
+        if (shop.gameObject.activeSelf) {
+            if (Input.GetKeyDown(KeyCode.Escape)) ExitShop();
+            if (Input.GetKeyDown(KeyCode.W)) UpgradeWeapon();
+            if (Input.GetKeyDown(KeyCode.D)) UpgradeDelay();
+            if (Input.GetKeyDown(KeyCode.M)) UpgradeMovement();
+            if (Input.GetKeyDown(KeyCode.H)) HPRecovery();
         }
     }
 
