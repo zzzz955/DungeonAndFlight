@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void UpdateEnemyHP(int HP, int maxHP) {
-        enemyHPText.SetText(HP.ToString() + " / " + maxHP.ToString());
+        enemyHPText.SetText("HP : " + HP.ToString() + " / " + maxHP.ToString());
     }
 
     public void UpdateEnemyImage(Sprite sprite) {
