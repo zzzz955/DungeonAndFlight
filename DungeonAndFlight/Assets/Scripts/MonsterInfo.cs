@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MonsterInfo : MonoBehaviour
 {
-    public float hp;          // 몬스터 체력
+    public int hp;          // 몬스터 체력
+    private int maxHP;
     public float moveSpeed;     // 몬스터 이동 속도
     public int damage;
 
@@ -29,10 +30,16 @@ public class MonsterInfo : MonoBehaviour
 
     private float lastTagTime = 0f;
 
+    private Sprite sprite;
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
         isMovingUp = Random.value > 0.5f; // 랜덤으로 이동 방향 결정
         isMovingHorizon = Random.value > 0.5f;
+        maxHP = hp;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        sprite = spriteRenderer.sprite;
     }
 
     void Update() {
@@ -77,7 +84,7 @@ public class MonsterInfo : MonoBehaviour
             hp -= weapon.damage;
             Destroy(other.gameObject);
             if (hp <= 0) {
-                Destroy(gameObject);
+                hp = 0;
                 if (isBoss) {
                     ran = 1;
                 } else {
@@ -92,6 +99,12 @@ public class MonsterInfo : MonoBehaviour
                 if (isBoss) {
                     GameManager.instance.BossKilled();
                 }
+                GameManager.instance.UpdateEnemyHP(hp, maxHP);
+                GameManager.instance.UpdateEnemyImage(sprite);
+                Destroy(gameObject);
+            } else {
+                GameManager.instance.UpdateEnemyHP(hp, maxHP);
+                GameManager.instance.UpdateEnemyImage(sprite);
             }
         } else if (other.gameObject.tag == "Player" && Time.time > lastTagTime) {
             lastTagTime = Time.time + 1f;

@@ -26,6 +26,21 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI HPText;
 
     [SerializeField]
+    private Image enemyImage;
+
+    [SerializeField]
+    private TextMeshProUGUI enemyHPText;    
+
+    [SerializeField]
+    private TextMeshProUGUI uiText1;
+
+    [SerializeField]
+    private TextMeshProUGUI uiText2;
+
+    [SerializeField]
+    private TextMeshProUGUI uiText3;
+
+    [SerializeField]
     private TextMeshProUGUI shopText1;
 
     [SerializeField]
@@ -65,7 +80,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int nextdelayIndex = 1;
 
-    private int[] movementPrice = new int[] {20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 110, 120, 130};
+    private int[] movementPrice = Enumerable.Repeat(30, 20).ToArray();
     
     [SerializeField]
     private int nextmovementIndex = 1;
@@ -105,6 +120,14 @@ public class GameManager : MonoBehaviour
     public void UpdateHP(int HP) {
         HPText.SetText(HP.ToString());
     }
+
+    public void UpdateEnemyHP(int HP, int maxHP) {
+        enemyHPText.SetText(HP.ToString() + " / " + maxHP.ToString());
+    }
+
+    public void UpdateEnemyImage(Sprite sprite) {
+        enemyImage.sprite = sprite;
+    }    
 
     public void StartGame()
     {
@@ -161,6 +184,7 @@ public class GameManager : MonoBehaviour
     void ShopUpdate() {
         if (nextWeaponIndex <= weaponPrice.Length) {
             shopText1.SetText(nextWeaponIndex.ToString());
+            uiText1.SetText((nextWeaponIndex - 1).ToString());
             shopPrice1.SetText(weaponPrice[nextWeaponIndex - 1].ToString());
         } else {
             shopText1.SetText("Max");
@@ -168,6 +192,7 @@ public class GameManager : MonoBehaviour
         }
         if (nextdelayIndex <= delayPrice.Length) {
             shopText2.SetText(nextdelayIndex.ToString());
+            uiText2.SetText((nextdelayIndex - 1).ToString());
             shopPrice2.SetText(delayPrice[nextdelayIndex - 1].ToString());
         } else {
             shopText2.SetText("Max");
@@ -175,6 +200,7 @@ public class GameManager : MonoBehaviour
         }
         if (nextmovementIndex <= movementPrice.Length) {
             shopText3.SetText(nextmovementIndex.ToString());
+            uiText3.SetText((nextmovementIndex - 1).ToString());
             shopPrice3.SetText(movementPrice[nextmovementIndex - 1].ToString());
         } else {
             shopText3.SetText("Max");
@@ -231,8 +257,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void HPRecovery() {
-        if (coin >= 100) {
-            coin -= 100;
+        if (coin >= 200) {
+            coin -= 200;
             Player player = FindObjectOfType<Player>();
             if (player != null) {
                 player.IncreaseHP();

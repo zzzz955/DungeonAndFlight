@@ -110,8 +110,8 @@ public class Player : MonoBehaviour
     }
 
     public void UpgradeMovement() {
-        moveSpeed += 1;
-        if (moveSpeed > 7) {
+        moveSpeed += 0.5f;
+        if (moveSpeed >= 8f) {
             AnimationController movemotion = GetComponent<AnimationController>();
             movemotion.movemotionUpgrade();
         }
