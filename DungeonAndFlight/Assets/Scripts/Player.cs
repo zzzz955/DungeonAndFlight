@@ -129,4 +129,8 @@ public class Player : MonoBehaviour
     public void IncreaseHP() {
         playerHp += 5;
     }
+
+    public void NewLevel() {
+        transform.position = new Vector3(-8f, 0f, 0f);
+    }
 }

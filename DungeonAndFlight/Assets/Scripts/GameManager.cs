@@ -7,6 +7,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -90,6 +91,7 @@ public class GameManager : MonoBehaviour
     private MonsterSpawner monsterSpawner;
     private BackGroundController backGroundController;
     private BGMController bgmController;
+    private Player player;
     
     void Awake() {
         if (instance == null) {
@@ -140,6 +142,7 @@ public class GameManager : MonoBehaviour
             monsterSpawner = FindObjectOfType<MonsterSpawner>();
             backGroundController = FindObjectOfType<BackGroundController>();
             bgmController = FindAnyObjectByType<BGMController>();
+            player = FindAnyObjectByType<Player>();
         }
     }
 
@@ -158,12 +161,19 @@ public class GameManager : MonoBehaviour
 
         if (!shop.gameObject.activeSelf && Input.GetKeyDown(KeyCode.P)) EnterShop();
 
+        if (gameOver.activeSelf && Input.GetKeyDown(KeyCode.M)) GoToMain();
+
         if (shop.gameObject.activeSelf) {
             if (Input.GetKeyDown(KeyCode.Escape)) ExitShop();
             if (Input.GetKeyDown(KeyCode.W)) UpgradeWeapon();
             if (Input.GetKeyDown(KeyCode.D)) UpgradeDelay();
             if (Input.GetKeyDown(KeyCode.M)) UpgradeMovement();
             if (Input.GetKeyDown(KeyCode.H)) HPRecovery();
+        }
+
+        if (stageClear.activeSelf) {
+            if (Input.GetKeyDown(KeyCode.T)) TryNextLevel();
+            if (Input.GetKeyDown(KeyCode.M)) GoToMain();
         }
     }
 
@@ -291,6 +301,7 @@ public class GameManager : MonoBehaviour
         monsterSpawner.NextLevel();
         backGroundController.NextLevel();
         bgmController.NextLevel();
+        player.NewLevel();
         stageClear.SetActive(false);
     }
 }

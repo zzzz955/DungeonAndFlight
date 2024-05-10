@@ -107,7 +107,7 @@ MonoBehaviour:
   defaultGold: 30
   isBoss: 0
   enemyWeapon1: {fileID: 4459611658358135105, guid: 7521c63cd49c6324ea77635a79c1c503, type: 3}
-  delay1: 1
+  delay1: 1.2
   enemyWeapon2: {fileID: 0}
   delay2: 1
 --- !u!95 &966047789488809300
