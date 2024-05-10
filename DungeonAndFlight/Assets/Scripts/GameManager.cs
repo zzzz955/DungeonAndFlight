@@ -18,7 +18,11 @@ public class GameManager : MonoBehaviour
     public bool isGameOver = false;
     public GameObject gameOver;
 
+    public GameObject quit;
+
     public GameObject shop;
+
+    public GameObject pause;
 
     private int coin = 0;
 
@@ -150,6 +154,14 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
+    public void ShowQuit() {
+        quit.SetActive(true);
+    }
+
+    public void DodgeQuit() {
+        quit.SetActive(false);
+    }
+
     public void QuitGame() {
         Application.Quit();
     }
@@ -159,16 +171,25 @@ public class GameManager : MonoBehaviour
     {
         if (isGameOver) gameOver.SetActive(true);
 
-        if (!shop.gameObject.activeSelf && Input.GetKeyDown(KeyCode.P)) EnterShop();
-
         if (gameOver.activeSelf && Input.GetKeyDown(KeyCode.M)) GoToMain();
 
-        if (shop.gameObject.activeSelf) {
-            if (Input.GetKeyDown(KeyCode.Escape)) ExitShop();
-            if (Input.GetKeyDown(KeyCode.W)) UpgradeWeapon();
-            if (Input.GetKeyDown(KeyCode.D)) UpgradeDelay();
-            if (Input.GetKeyDown(KeyCode.M)) UpgradeMovement();
-            if (Input.GetKeyDown(KeyCode.H)) HPRecovery();
+        if (startCanvas.activeSelf) {
+            if (Input.GetKeyDown(KeyCode.Escape)) ShowQuit();
+        }
+
+        if (startGame.activeSelf) {
+            if (!shop.activeSelf && !pause.activeSelf) {
+                if (Input.GetKeyDown(KeyCode.P)) EnterShop();
+                if (Input.GetKeyDown(KeyCode.Escape)) DoPause();
+            }
+
+            if (shop.activeSelf) {
+                if (Input.GetKeyDown(KeyCode.Escape)) ExitShop();
+                if (Input.GetKeyDown(KeyCode.W)) UpgradeWeapon();
+                if (Input.GetKeyDown(KeyCode.D)) UpgradeDelay();
+                if (Input.GetKeyDown(KeyCode.M)) UpgradeMovement();
+                if (Input.GetKeyDown(KeyCode.H)) HPRecovery();
+            }
         }
 
         if (stageClear.activeSelf) {
@@ -179,6 +200,16 @@ public class GameManager : MonoBehaviour
 
     public void EndGame() {
         isGameOver = true;
+    }
+
+    public void DoPause() {
+        Time.timeScale = 0f;
+        pause.SetActive(true);
+    }
+
+    public void DoResume() {
+        pause.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public void EnterShop() {
