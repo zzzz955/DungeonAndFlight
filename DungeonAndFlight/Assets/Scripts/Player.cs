@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
     {
         playerHp = 20;
         weaponIndex = 0;
+        UpdateUI();
     }
 
     // Update is called once per frame
@@ -103,10 +104,12 @@ public class Player : MonoBehaviour
 
     public void UpgradeWeapon() {
         weaponIndex += 1;
+        UpdateUI();
     }
 
     public void UpgradeDelay() {
         delay *= 0.9f;
+        UpdateUI();
     }
 
     public void UpgradeMovement() {
@@ -115,6 +118,12 @@ public class Player : MonoBehaviour
             AnimationController movemotion = GetComponent<AnimationController>();
             movemotion.movemotionUpgrade();
         }
+        UpdateUI();
+    }
+
+    private void UpdateUI() {
+        Weapon currentWeapon = weapon[weaponIndex].GetComponent<Weapon>();
+        GameManager.instance.UIUpdate(currentWeapon.damage, delay, moveSpeed);
     }
 
     public void IncreaseHP() {

@@ -22,11 +22,18 @@ public class MonsterInfo : MonoBehaviour
     private bool isBoss = false;
 
     [SerializeField]
-    private GameObject enemyWeapon;
+    private GameObject enemyWeapon1;
 
     [SerializeField]
-    private float delay = 1f;
-    private float lastShotTime = 0f;
+    private float delay1 = 1f;
+    private float lastShotTime1 = 0f;
+
+    [SerializeField]
+    private GameObject enemyWeapon2;
+
+    [SerializeField]
+    private float delay2 = 1f;
+    private float lastShotTime2 = 0f;
 
     private float lastTagTime = 0f;
 
@@ -70,8 +77,11 @@ public class MonsterInfo : MonoBehaviour
             isMovingHorizon = true;
         }
         }
-        if (enemyWeapon != null) {
-            Shoot();         
+        if (enemyWeapon1 != null) {
+            Shoot1();         
+        }
+        if (enemyWeapon2 != null) {
+            Shoot2();         
         }
         if (transform.position.x < minX) {
             Destroy(gameObject);
@@ -116,10 +126,17 @@ public class MonsterInfo : MonoBehaviour
         }
     }
 
-    void Shoot() {
-        if (Time.time > lastShotTime) {
-            Instantiate(enemyWeapon, transform.position, Quaternion.Euler(0f, 0f, -90f));
-            lastShotTime = Time.time + delay;
+    void Shoot1() {
+        if (Time.time > lastShotTime1) {
+            Instantiate(enemyWeapon1, transform.position, Quaternion.Euler(0f, 0f, -90f));
+            lastShotTime1 = Time.time + delay1;
+        }
+    }
+
+    void Shoot2() {
+        if (Time.time > lastShotTime2) {
+            Instantiate(enemyWeapon2, transform.position, Quaternion.Euler(0f, 0f, -90f));
+            lastShotTime2 = Time.time + delay2;
         }
     }
 }

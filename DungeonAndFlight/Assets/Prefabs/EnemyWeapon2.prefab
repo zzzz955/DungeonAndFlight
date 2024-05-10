@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  damage: 1
+  damage: 2
   isAdvanced: 0
 --- !u!70 &-9062974453892151963
 CapsuleCollider2D:

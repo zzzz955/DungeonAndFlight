@@ -106,8 +106,10 @@ MonoBehaviour:
   gold: {fileID: 5861875687015674019, guid: c7a6b21208b00254baaf3242bd201549, type: 3}
   defaultGold: 32
   isBoss: 0
-  enemyWeapon: {fileID: 4459611658358135105, guid: 584b508091bd39543824452c1a5088fc, type: 3}
-  delay: 2.5
+  enemyWeapon1: {fileID: 4459611658358135105, guid: 584b508091bd39543824452c1a5088fc, type: 3}
+  delay1: 1
+  enemyWeapon2: {fileID: 0}
+  delay2: 1
 --- !u!95 &966047789488809300
 Animator:
   serializedVersion: 5

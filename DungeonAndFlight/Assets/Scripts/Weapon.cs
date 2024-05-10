@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 10;
 
-    public int damage = 1;
+    public int damage = 2;
 
     // Start is called before the first frame update
     void Start()

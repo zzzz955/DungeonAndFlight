@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -184,7 +186,6 @@ public class GameManager : MonoBehaviour
     void ShopUpdate() {
         if (nextWeaponIndex <= weaponPrice.Length) {
             shopText1.SetText(nextWeaponIndex.ToString());
-            uiText1.SetText((nextWeaponIndex - 1).ToString());
             shopPrice1.SetText(weaponPrice[nextWeaponIndex - 1].ToString());
         } else {
             shopText1.SetText("Max");
@@ -192,7 +193,6 @@ public class GameManager : MonoBehaviour
         }
         if (nextdelayIndex <= delayPrice.Length) {
             shopText2.SetText(nextdelayIndex.ToString());
-            uiText2.SetText((nextdelayIndex - 1).ToString());
             shopPrice2.SetText(delayPrice[nextdelayIndex - 1].ToString());
         } else {
             shopText2.SetText("Max");
@@ -200,12 +200,17 @@ public class GameManager : MonoBehaviour
         }
         if (nextmovementIndex <= movementPrice.Length) {
             shopText3.SetText(nextmovementIndex.ToString());
-            uiText3.SetText((nextmovementIndex - 1).ToString());
             shopPrice3.SetText(movementPrice[nextmovementIndex - 1].ToString());
         } else {
             shopText3.SetText("Max");
             shopPrice3.SetText("Max");
         }
+    }
+
+    public void UIUpdate(int damage, float delay, float moveMent) {
+        uiText1.SetText(damage.ToString());
+        uiText2.SetText((int)((1 - (float)Math.Round(delay, 2)) * 100) + "%".ToString());
+        uiText3.SetText(moveMent.ToString());
     }
 
     public void UpgradeWeapon() {
