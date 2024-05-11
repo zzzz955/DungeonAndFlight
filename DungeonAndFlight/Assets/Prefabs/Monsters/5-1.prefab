@@ -100,14 +100,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9815a001fcef5634091bba5b4b188b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 120
   moveSpeed: 2
   damage: 5
   gold: {fileID: 5861875687015674019, guid: c7a6b21208b00254baaf3242bd201549, type: 3}
   defaultGold: 60
   isBoss: 0
-  enemyWeapon: {fileID: 0}
-  delay: 1
+  enemyWeapon1: {fileID: 0}
+  delay1: 1
+  enemyWeapon2: {fileID: 0}
+  delay2: 1
 --- !u!95 &966047789488809300
 Animator:
   serializedVersion: 5

@@ -5401,7 +5401,7 @@ GameObject:
   - component: {fileID: 943363263}
   - component: {fileID: 943363262}
   m_Layer: 5
-  m_Name: CurrentUpgrade (1)
+  m_Name: CurrentDelayUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7998,7 +7998,7 @@ GameObject:
   - component: {fileID: 1430700618}
   - component: {fileID: 1430700617}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: QuitGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9715,7 +9715,7 @@ GameObject:
   - component: {fileID: 1687757488}
   - component: {fileID: 1687757487}
   m_Layer: 5
-  m_Name: CurrentUpgrade
+  m_Name: CurrentWeaponUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10091,7 +10091,7 @@ GameObject:
   - component: {fileID: 1751551373}
   - component: {fileID: 1751551372}
   m_Layer: 5
-  m_Name: CurrentUpgrade (2)
+  m_Name: CurrentMovementUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
