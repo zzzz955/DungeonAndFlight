@@ -13,6 +13,9 @@ public class MonsterSpawner : MonoBehaviour
     public GameObject[] level5;
     private GameObject[][] levels;
     public int levelIndex;
+    private bool showWarning = true;
+    public GameObject warningTop;
+    public GameObject warningBottom;
 
     private float[] posY = {4f, 2f, 0f, -2f, -4f};
     private bool isCreate;
@@ -40,10 +43,14 @@ public class MonsterSpawner : MonoBehaviour
     {
         if (isCreate && gameObject.activeSelf) {
             spawnTime += Time.deltaTime;
+            if (createCnt == spawnPerLevels - 5) {
+                if (showWarning) SetWarning();
+                showWarning = false;
+            }
             if (spawnTime >= coolTime && createCnt < spawnPerLevels) {
                 SpawnEnemy(Random.Range(0, posY.Length), Random.Range(0, levels[levelIndex].Length));
                 createCnt += 1;
-                coolTime = Random.Range(1.0f, 5.0f) * coolDown;
+                coolTime = Random.Range(1.0f, 4.0f) * coolDown;
                 spawnTime = 0f;
             }
             if (createCnt == spawnPerLevels && isBossRound == false) {
@@ -59,8 +66,17 @@ public class MonsterSpawner : MonoBehaviour
     }
 
     void SpawnBoss(int index) {
-        Vector3 spawnPos = new Vector3(7f, 0, transform.position.z);
+        Vector3 spawnPos = new Vector3(7f, 0f, transform.position.z);
         Instantiate(Bosses[levelIndex], spawnPos, Quaternion.Euler(0f, 180f, 0f));
+    }
+
+    void SetWarning() {
+        Vector3 setTop = new Vector3(0f, 3.5f, transform.position.z);
+        Vector3 setBottom = new Vector3(0f, -3.5f, transform.position.z);
+        GameObject top = Instantiate(warningTop, setTop, Quaternion.identity);
+        GameObject bottom = Instantiate(warningBottom, setBottom, Quaternion.identity);
+        Destroy(top, 10f);
+        Destroy(bottom, 10f);
     }
 
     public void NextLevel() {
@@ -69,5 +85,6 @@ public class MonsterSpawner : MonoBehaviour
         isBossRound = false;
         coolDown *= 0.9f;
         spawnPerLevels += 15;
+        showWarning = true;
     }
 }
