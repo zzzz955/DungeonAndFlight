@@ -10440,9 +10440,11 @@ MonoBehaviour:
   - {fileID: 8919720073856826166, guid: c8c94cd59340dc049b024671f43310f4, type: 3}
   - {fileID: 8919720073856826166, guid: a25bd49f06c6d0546bd88d81b9e1f6c1, type: 3}
   levelIndex: 0
+  warningTop: {fileID: 7322143444140166, guid: 76071115997a9f9478d900638d99e8b7, type: 3}
+  warningBottom: {fileID: 404501437207060432, guid: 2bce7b04a8cf01647af5e09d4158f3b0, type: 3}
   coolDown: 1
   isBossRound: 0
-  spawnPerLevels: 30
+  spawnPerLevels: 10
 --- !u!1 &1809197493
 GameObject:
   m_ObjectHideFlags: 0

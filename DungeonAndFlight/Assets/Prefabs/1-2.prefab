@@ -101,13 +101,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 5
-  moveSpeed: 2
+  moveSpeed: 1.5
   damage: 1
   gold: {fileID: 5861875687015674019, guid: c7a6b21208b00254baaf3242bd201549, type: 3}
   defaultGold: 12
   isBoss: 0
-  enemyWeapon: {fileID: 0}
-  delay: 1
+  enemyWeapon1: {fileID: 0}
+  delay1: 1
+  enemyWeapon2: {fileID: 0}
+  delay2: 1
 --- !u!95 &966047789488809300
 Animator:
   serializedVersion: 5
