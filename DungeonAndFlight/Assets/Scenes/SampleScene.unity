@@ -10444,7 +10444,7 @@ MonoBehaviour:
   warningBottom: {fileID: 404501437207060432, guid: 2bce7b04a8cf01647af5e09d4158f3b0, type: 3}
   coolDown: 1
   isBossRound: 0
-  spawnPerLevels: 10
+  spawnPerLevels: 30
 --- !u!1 &1809197493
 GameObject:
   m_ObjectHideFlags: 0
